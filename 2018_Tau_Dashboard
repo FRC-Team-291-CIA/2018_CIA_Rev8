@@ -1,0 +1,218 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Tipping" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="374" y="15"/>
+		<width>113</width>
+		<height>59</height>
+		<property name="Color to show when true" value="255.0.0.255"/>
+		<property name="Color to show when false" value="255.255.255.255"/>
+	</widget>
+	<widget field="Gyro Yaw" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="15" y="531"/>
+	</widget>
+	<widget field="rightFollowerError" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="750" y="668"/>
+	</widget>
+	<widget field="leftFollowerError" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="758" y="646"/>
+	</widget>
+	<widget field="rightFollowerGoalVelocity" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="710" y="624"/>
+	</widget>
+	<widget field="rightFollowerGoal" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="754" y="582"/>
+	</widget>
+	<widget field="rightFollowerSensor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="739" y="538"/>
+	</widget>
+	<widget field="leftFollowerGoalVelocity" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="718" y="603"/>
+	</widget>
+	<widget field="leftFollowerGoal" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="762" y="560"/>
+	</widget>
+	<widget field="leftFollowerSensor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="747" y="516"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="641" y="216"/>
+		<width>185</width>
+		<height>91</height>
+		<property name="Text" value="Has Cube"/>
+	</static-widget>
+	<widget field="Robot Pitch" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="790" y="691"/>
+	</widget>
+	<widget field="Secondary Encoder Connected" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="2" y="616"/>
+		<width>233</width>
+		<height>31</height>
+	</widget>
+	<widget field="Primary Encoder Connected" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="3" y="582"/>
+		<width>216</width>
+		<height>33</height>
+	</widget>
+	<widget field="Gyro Connected" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="2" y="648"/>
+		<width>148</width>
+		<height>32</height>
+	</widget>
+	<widget field="Right Distance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="773" y="494"/>
+		<height>22</height>
+	</widget>
+	<widget field="Left Distance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="781" y="473"/>
+	</widget>
+	<widget field="Arm Angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="8" y="554"/>
+		<height>22</height>
+	</widget>
+	<widget field="Cube Sensor Connected" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="2" y="681"/>
+		<width>195</width>
+		<height>32</height>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="973" y="15"/>
+		<width>932</width>
+		<height>694</height>
+		<property name="Camera Choice" value=""/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="0" y="0"/>
+		<width>1906</width>
+		<height>10</height>
+	</static-widget>
+	<widget field="Auto Modes" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="1" y="10"/>
+	</widget>
+	<widget field="Starting Side" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="174" y="10"/>
+	</widget>
+	<widget field="Has Cube" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="491" y="15"/>
+		<width>537</width>
+		<height>456</height>
+		<property name="Color to show when true" value="0.255.102.255"/>
+		<property name="Color to show when false" value="255.255.255.255"/>
+	</widget>
+</dashboard>
+<live-window>
+	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Solenoid[1,7]" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
+			<location x="0" y="0"/>
+			<height>0</height>
+			<width>0</width>
+		</widget>
+		<widget field="Solenoid[1,7]" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
+			<location x="0" y="0"/>
+			<height>0</height>
+			<width>0</width>
+		</widget>
+		<widget field="Encoder[1]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="18"/>
+			<height>106</height>
+			<width>309</width>
+		</widget>
+		<widget field="Spark[5]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="124"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="Solenoid[0,1]" type="Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
+			<location x="99" y="175"/>
+			<height>25</height>
+			<width>123</width>
+		</widget>
+		<widget field="Encoder[2]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="200"/>
+			<height>106</height>
+			<width>309</width>
+		</widget>
+		<widget field="Spark[2]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="306"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="Solenoid[0,0]" type="Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
+			<location x="99" y="357"/>
+			<height>25</height>
+			<width>123</width>
+		</widget>
+		<widget field="Solenoid[0,2]" type="Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
+			<location x="99" y="382"/>
+			<height>25</height>
+			<width>123</width>
+		</widget>
+		<widget field="Spark[3]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="407"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="Spark[1]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="458"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="Solenoid[0,7]" type="Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
+			<location x="99" y="509"/>
+			<height>25</height>
+			<width>123</width>
+		</widget>
+		<widget field="Encoder[0]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="534"/>
+			<height>106</height>
+			<width>309</width>
+		</widget>
+		<widget field="Spark[0]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="640"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="Spark[8]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="691"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="AnalogInput[3]" type="Analog Input" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
+			<location x="6" y="742"/>
+			<height>22</height>
+			<width>309</width>
+		</widget>
+		<widget field="Spark[7]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="764"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="AnalogInput[2]" type="Analog Input" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
+			<location x="6" y="815"/>
+			<height>22</height>
+			<width>309</width>
+		</widget>
+		<widget field="Spark[6]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="837"/>
+			<height>51</height>
+			<width>309</width>
+		</widget>
+		<widget field="Ultrasonic[0]" type="Ultrasonic" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
+			<location x="6" y="888"/>
+			<height>22</height>
+			<width>309</width>
+		</widget>
+		<location x="3" y="27"/>
+		<width>321</width>
+		<height>917</height>
+	</widget>
+</live-window>
+	<hidden field="Wrist"/>
+	<hidden field="deployTimer"/>
+	<hidden field="Right Velocity"/>
+	<hidden field="RawPrimaryVoltage"/>
+	<hidden field="RawSecondaryVoltage"/>
+	<hidden field="Second Wrist"/>
+	<hidden field="Left Velocity"/>
+	<hidden field="Pitch"/>
+	<hidden field="Pict"/>
+</xml>
