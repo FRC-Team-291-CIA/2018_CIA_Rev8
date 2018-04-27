@@ -56,7 +56,7 @@ public class FarScaleTwoCubeSnapAuto extends AutoMode{
 		switch(state){
 		case INIT:
 			init();
-			state = State.DRIVE_FORWARD;
+			if(timer.get() > 2.0) state = State.DRIVE_FORWARD;
 			//timer.reset();
 			break;
 
@@ -117,7 +117,7 @@ public class FarScaleTwoCubeSnapAuto extends AutoMode{
 			cubeArm.setWantedArmState(ArmState.MIDDLE_SCALE_LEVEL);
 			//cubeArm.setWantedArmState(ArmState.IDLE);
 			if(timer.get() < .0) cubeIntake.ejectCube(0);
-			else if(timer.get() < .4) cubeIntake.ejectCube(.45);// .5
+			else if(timer.get() < .4) cubeIntake.ejectCube(.6);// .5
 			else if(startOnLeft){
 				trajectoryLeft = RightFarScaleToIntakePath.trajectoryArray[1];
 				trajectoryRight = RightFarScaleToIntakePath.trajectoryArray[0];

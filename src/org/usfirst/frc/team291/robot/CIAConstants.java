@@ -53,7 +53,7 @@ public class CIAConstants {
 	public static final double tertiaryEncoderAngleConversion = 360.0/4096.0;//converts pulses to degrees
 	
 	public static final double primaryEncoderZero = 49.39;
-	public static final double secondaryEncoderZero = 322.76;
+	public static final double secondaryEncoderZero = 330.4;
 //	public static final double primaryEncoderZero = 98.13;//
 //	public static final double secondaryEncoderZero = 84.4;//
 	public static final double stowedArmAngle = 15.0;

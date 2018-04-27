@@ -39,6 +39,7 @@ public class FarSideTwoCubeScaleAuto extends AutoMode{
 		}
 		controller = new TrajectoryDriveController(trajectoryLeft, trajectoryRight, -1.0);
 		timer.start();
+		timer.reset();
 	}
 
 	@Override
@@ -69,8 +70,8 @@ public class FarSideTwoCubeScaleAuto extends AutoMode{
 		switch(state){
 		case INIT:
 			init();
-			state = State.DRIVE_TO_SCALE;
-			timer.reset();
+			if(timer.get() > 2.0) state = State.DRIVE_TO_SCALE;
+			
 			break;
 
 		case DRIVE_TO_SCALE:

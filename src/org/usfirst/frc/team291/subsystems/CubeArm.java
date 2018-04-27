@@ -41,8 +41,8 @@ public class CubeArm extends Subsystem{
 	private double wantedArmAngle;
 	private double armEbsilon = 4;
 	private double stowedAngle = 20;
-	private double groundAngle = 40;
-	private double switchAngle = 70;//80 TODO
+	private double groundAngle = 37;
+	private double switchAngle = 80;//80 TODO
 	private double frontScaleAngle = 120;
 	private double scaleAngle = 170;
 	private double autoPrepAngle = 170;
@@ -71,7 +71,7 @@ public class CubeArm extends Subsystem{
 	
 	public static enum ArmState{
 		ACQUIRING, STOWED, VAULT_LEVEL, SWITCH_LEVEL, LOW_SCALE_LEVEL, MIDDLE_LOW_SCALE_LEVEL, MIDDLE_SCALE_LEVEL, FAST_SCALE_LEVEL, AUTO_SCALE_PREP,
-		FRONT_SCALE_LEVEL, HIGH_SCALE_LEVEL, HOOK_LEVEL, HOOKING, MOVING, PAUSING, INTERUPTED, IDLE
+		FRONT_SCALE_LEVEL, HIGH_SCALE_LEVEL, HOOK_LEVEL, HOOK_PREP, HOOKING, MOVING, PAUSING, INTERUPTED, IDLE
 	}
 	
 	public void setWantedArmState(ArmState wantedState){
@@ -219,6 +219,25 @@ public class CubeArm extends Subsystem{
 				systemState = wantedState;
 			}
 			break;
+		case HOOK_PREP:
+			if(systemState == ArmState.LOW_SCALE_LEVEL || systemState == ArmState.MIDDLE_SCALE_LEVEL || 
+			systemState == ArmState.MIDDLE_LOW_SCALE_LEVEL || systemState == ArmState.HIGH_SCALE_LEVEL || systemState == ArmState.AUTO_SCALE_PREP){
+				wantedArmAngle = 165.0;
+				systemState = wantedState;
+			}
+			else if(systemState != ArmState.LOW_SCALE_LEVEL && CIAObjects.cubeIntake.waitForWrist()){
+				//systemState = ArmState.PAUSING;
+			}
+			else if(!armIsHigh()){
+				wantedArmAngle = 165.0;
+				systemState = ArmState.MOVING;
+			}
+			else{
+				wantedArmAngle = 165.0;
+				systemState = wantedState;
+			}
+			waitTimer.reset();
+			break;
 		case HOOK_LEVEL:
 			if(systemState == ArmState.LOW_SCALE_LEVEL || systemState == ArmState.MIDDLE_SCALE_LEVEL || 
 			systemState == ArmState.MIDDLE_LOW_SCALE_LEVEL || systemState == ArmState.HIGH_SCALE_LEVEL || systemState == ArmState.AUTO_SCALE_PREP){
@@ -316,6 +335,9 @@ public class CubeArm extends Subsystem{
 			break;
 		case HIGH_SCALE_LEVEL:
 			CIAObjects.cubeIntake.setWristState(IntakeState.SCORING_HIGH);
+			break;
+		case HOOK_PREP:
+			CIAObjects.cubeIntake.setWristState(IntakeState.PREPARING_HOOK);
 			break;
 		case HOOK_LEVEL:
 			CIAObjects.cubeIntake.setWristState(IntakeState.PREPARING_HOOK);

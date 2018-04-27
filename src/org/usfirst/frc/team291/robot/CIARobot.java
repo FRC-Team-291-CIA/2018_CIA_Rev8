@@ -68,7 +68,8 @@ public class CIARobot extends TimedRobot {
 		else if(operator.getRawButton(CIAConstants.lowScaleButton)) wantedArmState = ArmState.LOW_SCALE_LEVEL;
 		else if(operator.getRawButton(CIAConstants.switchButton)) wantedArmState = ArmState.SWITCH_LEVEL;
 		else if(operator.getRawButton(CIAConstants.frontScaleButton)) wantedArmState = ArmState.FAST_SCALE_LEVEL;
-		else if(driver.getRawButton(CIAConstants.hookLevelButton)) wantedArmState = ArmState.HOOK_LEVEL;
+		else if(driver.getRawButton(CIAConstants.hookLevelButton)) wantedArmState = ArmState.HOOK_PREP;
+		else if(driver.getRawButton(CIAConstants.hookLevelButton) && CIAObjects.cubeArm.getSystemState() == ArmState.HOOK_PREP) wantedArmState = ArmState.HOOK_LEVEL;
 		else if(driver.getRawButton(CIAConstants.hookingButton)) wantedArmState = ArmState.HOOKING;
 		else if(operator.getRawButton(CIAConstants.intakeButton) || operator.getRawButton(CIAConstants.powerIntakeButton)
 				|| operator.getRawButton(CIAConstants.vaultButton)) wantedArmState = ArmState.STOWED; 

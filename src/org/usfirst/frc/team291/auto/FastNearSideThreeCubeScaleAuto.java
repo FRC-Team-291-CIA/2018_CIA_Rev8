@@ -4,6 +4,7 @@ import org.usfirst.frc.team291.auto.arrays.FastNearScalePath;
 import org.usfirst.frc.team291.auto.arrays.IntakeToScalePath;
 import org.usfirst.frc.team291.auto.arrays.LeftScaleToIntakePath;
 import org.usfirst.frc.team291.auto.arrays.LeftScaleToSecondIntakePath;
+import org.usfirst.frc.team291.auto.arrays.LeftSecondCubeToScalePath;
 import org.usfirst.frc.team291.auto.arrays.RightScaleToIntakePath;
 import org.usfirst.frc.team291.pathfollower.Trajectory;
 import org.usfirst.frc.team291.pathfollower.TrajectoryDriveController;
@@ -78,7 +79,7 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 			if(timer.get() < .75){
 				cubeArm.setWantedArmState(ArmState.IDLE);
 			}
-			else if(timer.get() > 3.8){//3.5
+			else if(timer.get() > 3.6){//3.5
 				cubeArm.setWantedArmState(ArmState.STOWED);
 			}
 			else if(timer.get() > 3.45){
@@ -121,8 +122,8 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 			}
 			
 			else{
-				trajectoryLeft = RightScaleToIntakePath.trajectoryArray[1];
-				trajectoryRight = RightScaleToIntakePath.trajectoryArray[0];
+				trajectoryLeft = LeftScaleToIntakePath.trajectoryArray[1];
+				trajectoryRight = LeftScaleToIntakePath.trajectoryArray[0];
 				state = State.PAUSE_FOR_ARM;
 				timer.reset();
 				cubeIntake.ejectCube(0);
@@ -203,8 +204,8 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 				controller = new TrajectoryDriveController(trajectoryLeft, trajectoryRight, 1.0);
 			}
 			else if(!startOnLeft){
-				trajectoryLeft = RightScaleToIntakePath.trajectoryArray[1];
-				trajectoryRight = RightScaleToIntakePath.trajectoryArray[0];
+				trajectoryLeft = LeftScaleToSecondIntakePath.trajectoryArray[1];
+				trajectoryRight = LeftScaleToSecondIntakePath.trajectoryArray[0];
 				state = State.PAUSE_FOR_ARM_AGAIN;
 				timer.reset();
 				cubeIntake.ejectCube(0);
@@ -238,15 +239,19 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 			}
 			else{ // Finished the path.
 				if(startOnLeft){
-					trajectoryLeft = IntakeToScalePath.trajectoryArray[0];
-					trajectoryRight = IntakeToScalePath.trajectoryArray[1];
+//					trajectoryLeft = IntakeToScalePath.trajectoryArray[0];
+//					trajectoryRight = IntakeToScalePath.trajectoryArray[1];
+					trajectoryLeft = LeftSecondCubeToScalePath.trajectoryArray[0];
+					trajectoryRight = LeftSecondCubeToScalePath.trajectoryArray[1];
 					timer.reset();
 					
 					controller = new TrajectoryDriveController(trajectoryLeft, trajectoryRight, -1.0);
 				}
 				else if(!startOnLeft){
-					trajectoryLeft = IntakeToScalePath.trajectoryArray[1];
-					trajectoryRight = IntakeToScalePath.trajectoryArray[0];
+//					trajectoryLeft = IntakeToScalePath.trajectoryArray[1];
+//					trajectoryRight = IntakeToScalePath.trajectoryArray[0];
+					trajectoryLeft = LeftSecondCubeToScalePath.trajectoryArray[1];
+					trajectoryRight = LeftSecondCubeToScalePath.trajectoryArray[0];
 					timer.reset();
 					controller = new TrajectoryDriveController(trajectoryLeft, trajectoryRight, -1.0);
 				}
@@ -261,8 +266,8 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 		case DRIVE_BACK_TO_SCALE_AGAIN:
 			if(timer.get() > 1) cubeArm.setWantedArmState(ArmState.FAST_SCALE_LEVEL);
 			else cubeArm.setWantedArmState(ArmState.STOWED);
-			if(timer.get() > 1.75){
-				cubeIntake.ejectCube(.5);
+			if(timer.get() > 1.4){
+				cubeIntake.ejectCube(.7);//TODO
 			}
 			if(!controller.onTarget()){// Still driving the path.
 				controller.update();// does the calculations and updates the driveBase
@@ -276,8 +281,10 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 			break;
 			
 		case FINISHED:
-			cubeIntake.ejectCube(.5);//stop ejecting the cube
-			cubeArm.setWantedArmState(ArmState.FAST_SCALE_LEVEL);
+//			cubeIntake.ejectCube(.5);//stop ejecting the cube
+//			cubeArm.setWantedArmState(ArmState.FAST_SCALE_LEVEL);
+			cubeIntake.ejectCube(0);//stop ejecting the cube
+			cubeArm.setWantedArmState(ArmState.SWITCH_LEVEL);
 			driveBase.setLeftRightPower(0,0);
 			break;
 		}
@@ -290,7 +297,7 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 	@Override
 	public boolean isValid(boolean startOnLeft, boolean switchOnLeft, boolean scaleOnLeft) {
 		if(startOnLeft == scaleOnLeft) return true;
-		else return false;
+		else return false;//TODO
 	}
 
 
