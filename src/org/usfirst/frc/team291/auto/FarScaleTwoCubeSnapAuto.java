@@ -56,7 +56,7 @@ public class FarScaleTwoCubeSnapAuto extends AutoMode{
 		switch(state){
 		case INIT:
 			init();
-			if(timer.get() > 2.0) state = State.DRIVE_FORWARD;
+			state = State.DRIVE_FORWARD;
 			//timer.reset();
 			break;
 

@@ -5,7 +5,8 @@ import org.usfirst.frc.team291.auto.arrays.IntakeToScalePath;
 import org.usfirst.frc.team291.auto.arrays.LeftScaleToIntakePath;
 import org.usfirst.frc.team291.auto.arrays.LeftScaleToSecondIntakePath;
 import org.usfirst.frc.team291.auto.arrays.LeftSecondCubeToScalePath;
-import org.usfirst.frc.team291.auto.arrays.RightScaleToIntakePath;
+import org.usfirst.frc.team291.auto.arrays.RightIntakeToScalePath;
+import org.usfirst.frc.team291.auto.arrays.RightScaleToSecondIntakePath;
 import org.usfirst.frc.team291.pathfollower.Trajectory;
 import org.usfirst.frc.team291.pathfollower.TrajectoryDriveController;
 import org.usfirst.frc.team291.subsystems.CubeArm.ArmState;
@@ -158,8 +159,8 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 					controller = new TrajectoryDriveController(trajectoryLeft, trajectoryRight, -1.0);
 				}
 				else{
-					trajectoryLeft = IntakeToScalePath.trajectoryArray[1];
-					trajectoryRight = IntakeToScalePath.trajectoryArray[0];
+					trajectoryLeft = RightIntakeToScalePath.trajectoryArray[1];
+					trajectoryRight = RightIntakeToScalePath.trajectoryArray[0];
 					timer.reset();
 					controller = new TrajectoryDriveController(trajectoryLeft, trajectoryRight, -1.0);
 				}
@@ -204,8 +205,8 @@ public class FastNearSideThreeCubeScaleAuto extends AutoMode{
 				controller = new TrajectoryDriveController(trajectoryLeft, trajectoryRight, 1.0);
 			}
 			else if(!startOnLeft){
-				trajectoryLeft = LeftScaleToSecondIntakePath.trajectoryArray[1];
-				trajectoryRight = LeftScaleToSecondIntakePath.trajectoryArray[0];
+				trajectoryLeft = RightScaleToSecondIntakePath.trajectoryArray[1];
+				trajectoryRight = RightScaleToSecondIntakePath.trajectoryArray[0];
 				state = State.PAUSE_FOR_ARM_AGAIN;
 				timer.reset();
 				cubeIntake.ejectCube(0);

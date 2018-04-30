@@ -3,7 +3,7 @@ package org.usfirst.frc.team291.auto.arrays;
 import org.usfirst.frc.team291.pathfollower.Trajectory.Segment;
 import org.usfirst.frc.team291.pathfollower.Trajectory;
 
-public class IntakeToScalePath {
+public class RightIntakeToScalePath {
 
 	public static final Trajectory[] trajectoryArray =  {
 		new Trajectory(new Segment[]{
